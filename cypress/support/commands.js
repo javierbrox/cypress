@@ -1,25 +1,31 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+import modal from '../selectors/modal'
+import selectors from '../selectors/selectors'
+
+Cypress.Commands.add("getByDataHook", (datahook) => {
+  cy.get(`[data-hook*=${datahook}]`)
+})
+
+Cypress.Commands.add("clickByDataHook", (datahook) => {
+  cy.get(`[data-hook*=${datahook}]`).click()
+})
+
+Cypress.Commands.add("clickButtonByText", (text) => {
+  cy.get('a, button').contains(text).click()
+})
+
+Cypress.Commands.add("selectLiElement", (element) => {
+  cy.get('li').eq(element - 1).click()
+})
+
+Cypress.Commands.add("typeTextByTag", (tag, tagId) => {
+  cy.get(`[${tag}*=${tagId}]`)
+})
+
+Cypress.Commands.add("modalIsReady", (modalName) => {
+  cy.get(modal[modalName], { timeout: 3000 }).should('be.visible')
+})
+
+Cypress.Commands.add("inputIsPresent", (inputName) => {
+  cy.get(selectors.input[inputName], { timeout: 3000 }).should('be.visible')
+})
+

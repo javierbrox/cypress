@@ -9,3 +9,4 @@ Feature: The Google
   Scenario: Different kind of opening
     Given I kinda open Google page
     Then I am very happy
+

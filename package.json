@@ -4,6 +4,14 @@
   "description": "Example of cypress with cucumber",
   "main": "index.js",
   "scripts": {
+    "cy:open": "cypress open",
+    "cy:verify": "cypress verify",
+    "cy:run": "cypress run",
+    "cy:record": "cypress run --record",
+    "cy:parallel": "cypress run --record --parallel",
+    "report:merge": "npx mochawesome-merge cypress/json-reports/*.json>cypress/reports/json-reports/test-reports-merged.json",
+    "report:html": "npx marge -o cypress/reports/html-report cypress/reports/json-reports/test-reports.json",
+    "report:html-merged": "npx marge -o cypress/reports/html-report cypress/reports/json-reports/test-reports-merged.json",
     "test": "cypress run --spec \"**/*.feature\"",
     "test:all": "cypress run --spec \"**/*.features\""
   },
@@ -23,10 +31,12 @@
   },
   "homepage": "https://github.com/TheBrainFamily/cypress-cucumber-example#readme",
   "dependencies": {
-    "cypress": "^3.4.1",
     "cypress-cucumber-preprocessor": "^1.16.2"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": false
+  },
+  "devDependencies": {
+    "cypress": "^3.8.3"
   }
 }

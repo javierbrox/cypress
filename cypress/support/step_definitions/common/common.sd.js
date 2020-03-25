@@ -1,7 +1,8 @@
 import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
 
-Given("i navigate to {string}", (url) => {
+Given("I navigate to {string}", (url) => {
   cy.visit(url)
+  cy.get('#mat-button-toggle-4-button > .mat-button-toggle-label-content').click()
 })
 
 Given("click {string} button", (text) => {
@@ -35,6 +36,33 @@ Then(`check basic options`, () => {
   // cy.get('#search_query_top').type('dress');
   
 });
+
+
+//AQUI EMPIEZAN LOS TETS NUEVOS
+
+
+
+When('I write "workflowID" workflowId', () =>{
+  cy.get('#mat-input-3').type('LARA-BAJA-MIERCOLES-01')
+
+}); 
+
+When('I write "RunId" runId', () =>{
+  cy.get('#mat-input-4').type('86a186ee-8beb-412a-84e3-320a7e7122ec{enter}')
+  cy.get('#mat-input-3').click()
+
+}); 
+
+When('I click in "search" button', () => {
+  cy.get(':nth-child(1) > .col-md-2 > .mat-primary').click()
+  
+})
+
+Then('Workflow Id is shown with every data', () => {
+  cy.wait(10000)
+  cy.get('tbody.ng-tns-c37-19 > .row > :nth-child(1)').contains('LARA-BAJA-MIERCOLES-01')
+
+})
 
 
 

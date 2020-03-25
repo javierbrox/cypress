@@ -1,4 +1,6 @@
 {
   "ignoreTestFiles": "*.js",
-  "testFiles": "**/*.{feature,features}"
+  "testFiles": "**/*.{feature,features}",
+  "baseUrl": "https://bpm-frontend.private.dev.k8s.masmovil.com/provision/workflows",
+  "url": "https://bpm-frontend.private.dev.k8s.masmovil.com/provision"
 }

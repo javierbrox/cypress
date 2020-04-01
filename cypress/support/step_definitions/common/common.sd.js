@@ -28,13 +28,13 @@ Given("{string} input is present", (inputName) => {
 
 //TEST Search by WorkflowId with runId
 
-When('I write "workflowID" workflowId', () =>{
-  cy.get('#mat-input-3').type('LARA-BAJA-MIERCOLES-01')
+When('I write {string} workflowId',  (workflowID) =>{
+  cy.get('#mat-input-3').type(workflowID)
 
 }); 
 
-When('I write "RunId" runId', () =>{
-  cy.get('#mat-input-4').type('86a186ee-8beb-412a-84e3-320a7e7122ec{enter}')
+When('I write {string} runId', (RunId) =>{
+  cy.get('#mat-input-4').type(RunId).type('{enter}')
   cy.get('#mat-input-3').click()
 
 }); 
